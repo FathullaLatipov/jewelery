@@ -1,0 +1,75 @@
+/*
+ * Semantic roles. A section sets data-theme and everything inside it
+ * reads these roles — components never reference primitives directly.
+ */
+
+:root,
+[data-theme="paper"] {
+  --surface: var(--paper);
+  --surface-raised: var(--pearl);
+  --text-primary: var(--ink);
+  --text-secondary: var(--graphite);
+  --text-tertiary: var(--ash);
+  --accent: var(--patina);
+  --line: rgb(var(--ink-rgb) / 0.14);
+  --line-strong: rgb(var(--ink-rgb) / 0.42);
+  --action-fill: var(--ink);
+  --action-fill-hover: #262a27;
+  --action-text: var(--paper);
+  --focus-ring: var(--patina);
+  --error: var(--garnet);
+  --success: var(--jade);
+}
+
+[data-theme="limestone"] {
+  --surface: var(--limestone);
+  --surface-raised: var(--pearl);
+  --text-primary: var(--ink);
+  --text-secondary: var(--graphite);
+  /* ash drops below 4.5:1 on limestone, so tertiary text uses graphite here */
+  --text-tertiary: var(--graphite);
+  --accent: var(--patina);
+  --line: rgb(var(--ink-rgb) / 0.16);
+  --line-strong: rgb(var(--ink-rgb) / 0.42);
+  --action-fill: var(--ink);
+  --action-fill-hover: #262a27;
+  --action-text: var(--paper);
+  --focus-ring: var(--patina);
+}
+
+[data-theme="ink"] {
+  --surface: var(--ink);
+  --surface-raised: var(--ink-raised);
+  --text-primary: var(--paper);
+  --text-secondary: var(--mist);
+  --text-tertiary: var(--mist);
+  --accent: var(--champagne);
+  --line: rgb(var(--paper-rgb) / 0.16);
+  --line-strong: rgb(var(--paper-rgb) / 0.42);
+  --action-fill: var(--paper);
+  --action-fill-hover: #e2ddd3;
+  --action-text: var(--ink);
+  --focus-ring: var(--champagne);
+  --error: #d98a7e;
+  --success: #8fbfae;
+}
+
+/* Text set directly over photography */
+[data-theme="media"] {
+  --surface: transparent;
+  --surface-raised: rgb(var(--ink-rgb) / 0.4);
+  --text-primary: var(--paper);
+  --text-secondary: rgb(var(--paper-rgb) / 0.86);
+  --text-tertiary: rgb(var(--paper-rgb) / 0.74);
+  --accent: var(--champagne);
+  --line: rgb(var(--paper-rgb) / 0.26);
+  --line-strong: rgb(var(--paper-rgb) / 0.6);
+  --action-fill: var(--paper);
+  --action-fill-hover: #e2ddd3;
+  --action-text: var(--ink);
+  --focus-ring: var(--champagne);
+}
+
+[data-theme] {
+  color: var(--text-primary);
+}

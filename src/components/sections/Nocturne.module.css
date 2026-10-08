@@ -1,0 +1,56 @@
+.intro {
+  row-gap: var(--space-5);
+  margin-bottom: var(--space-block);
+}
+
+.eyebrow,
+.title,
+.lede {
+  grid-column: 1 / -1;
+}
+
+.title {
+  color: var(--text-primary);
+}
+
+.lede {
+  max-width: 30ch;
+  color: var(--text-secondary);
+}
+
+.wide {
+  margin-bottom: var(--space-block);
+}
+
+.wideCaption {
+  margin-top: var(--space-3);
+  color: var(--text-tertiary);
+}
+
+.outro {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-block);
+}
+
+@media (min-width: 1024px) {
+  .intro {
+    align-items: end;
+  }
+
+  .eyebrow {
+    grid-column: 1 / span 3;
+    grid-row: 1;
+  }
+
+  .title {
+    grid-column: 1 / span 7;
+    grid-row: 2;
+  }
+
+  .lede {
+    grid-column: 9 / span 4;
+    grid-row: 2;
+    padding-bottom: 1.2rem;
+  }
+}

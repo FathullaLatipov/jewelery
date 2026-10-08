@@ -1,0 +1,36 @@
+.header {
+  display: grid;
+  gap: var(--space-5);
+  margin-bottom: var(--space-block);
+}
+
+.heading {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+}
+
+.title {
+  max-width: 16ch;
+}
+
+.lede {
+  max-width: var(--measure-narrow);
+  color: var(--text-secondary);
+}
+
+@media (min-width: 1024px) {
+  .header {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    align-items: end;
+  }
+
+  .heading {
+    grid-column: 1 / span 7;
+  }
+
+  .lede {
+    grid-column: 9 / span 4;
+  }
+}

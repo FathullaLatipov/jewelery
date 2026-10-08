@@ -1,0 +1,77 @@
+.card {
+  --frame-surface: var(--surface-raised);
+  height: 100%;
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  height: 100%;
+}
+
+.media {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--surface-raised);
+}
+
+.primary {
+  transition: transform var(--dur-reveal) var(--ease-silk);
+}
+
+.media .worn {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--dur-short) var(--ease-breath);
+}
+
+/* A faint pass of light across the object */
+.glint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(112deg, transparent 38%, rgb(255 255 255 / 0.16) 50%, transparent 62%);
+  transform: translateX(-110%);
+}
+
+.caption {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.arrow {
+  flex: none;
+  margin-top: 0.15rem;
+  color: var(--text-tertiary);
+  transition:
+    transform var(--dur-short) var(--ease-silk),
+    color var(--dur-micro) var(--ease-breath);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover .primary {
+    transform: scale(1.025);
+  }
+
+  .link:hover .worn {
+    opacity: 1;
+  }
+
+  .link:hover .glint {
+    transform: translateX(110%);
+    transition: transform var(--dur-reveal) var(--ease-breath);
+  }
+
+  .link:hover .arrow {
+    transform: translateX(6px);
+    color: var(--text-primary);
+  }
+}
+
+.link:focus-visible {
+  outline-offset: 6px;
+}

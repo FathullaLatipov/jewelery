@@ -1,0 +1,107 @@
+/*
+ * Held Light — design tokens.
+ * Primitives live here; components consume the semantic roles in themes.css.
+ * Breakpoints (used literally in media queries): 480 · 768 · 1024 · 1440.
+ */
+
+:root {
+  /* Palette — primitives */
+  --paper: #f3efe7;
+  --pearl: #f9f7f2;
+  --limestone: #e6e0d4;
+  --ink: #121513;
+  --ink-raised: #1b1f1c;
+  --graphite: #4a4d49;
+  --ash: #6b6c66;
+  --patina: #7a5c36;
+  --champagne: #b89b6e;
+  --mist: #a7a69d;
+  --garnet: #8e2f2f;
+  --jade: #2f5d4e;
+  --ink-rgb: 18 21 19;
+  --paper-rgb: 243 239 231;
+
+  /* Type families */
+  --font-serif: var(--font-newsreader), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-serif-italic: var(--font-newsreader-italic), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --font-sans: var(--font-instrument), "Helvetica Neue", Arial, sans-serif;
+
+  /* Type scale — fluid between 375px and 1600px viewports */
+  --text-display-xl: clamp(2.75rem, 1.449rem + 5.551vw, 7rem);
+  --text-display-l: clamp(2.375rem, 1.418rem + 4.082vw, 5.5rem);
+  --text-display-m: clamp(1.75rem, 1.214rem + 2.286vw, 3.5rem);
+  --text-heading: clamp(1.3125rem, 1.179rem + 0.571vw, 1.75rem);
+  --text-lede: clamp(1.1875rem, 1.092rem + 0.408vw, 1.5rem);
+  --text-body: clamp(0.9375rem, 0.899rem + 0.163vw, 1.0625rem);
+  --text-label: clamp(0.6875rem, 0.668rem + 0.082vw, 0.75rem);
+  --text-caption: clamp(0.75rem, 0.731rem + 0.082vw, 0.8125rem);
+
+  --tracking-display: -0.022em;
+  --tracking-label: 0.16em;
+  --measure: 34rem;
+  --measure-narrow: 26rem;
+
+  /* Spacing — 4px base */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+  --space-11: 12rem;
+  --space-block: clamp(3rem, 1.776rem + 5.224vw, 7rem);
+  --space-section: clamp(6rem, 4.163rem + 7.837vw, 12rem);
+
+  /* Grid */
+  --grid-columns: 4;
+  --grid-margin: 1.25rem;
+  --grid-gutter: 1rem;
+  --content-max: 105rem;
+
+  /* Chrome */
+  --header-height: 3.75rem;
+  --dock-height: 3.5rem;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --touch-target: 2.75rem;
+  --hairline: 1px;
+  --rule-length: 2rem;
+
+  /* Motion — mirrored in src/lib/motion/tokens.ts */
+  --dur-micro: 240ms;
+  --dur-short: 480ms;
+  --dur-reveal: 900ms;
+  --dur-hero: 1600ms;
+  --ease-silk: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-breath: cubic-bezier(0.65, 0, 0.35, 1);
+  --shift-sm: 16px;
+  --shift-md: 24px;
+  --shift-lg: 32px;
+
+  /* Layers */
+  --z-raised: 10;
+  --z-header: 100;
+  --z-dock: 110;
+  --z-overlay: 200;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --grid-columns: 8;
+    --grid-margin: 2rem;
+    --grid-gutter: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --grid-columns: 12;
+    --grid-margin: clamp(2rem, 4vw, 5rem);
+    --grid-gutter: clamp(1.25rem, 1.6vw, 2rem);
+    --header-height: 4.5rem;
+    --dock-height: 0px;
+  }
+}

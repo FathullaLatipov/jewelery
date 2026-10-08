@@ -1,0 +1,140 @@
+.grid {
+  align-items: stretch;
+}
+
+.media {
+  display: none;
+}
+
+.content {
+  grid-column: 1 / -1;
+}
+
+.intro {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+  margin-bottom: var(--space-block);
+}
+
+.lede {
+  max-width: 30ch;
+  color: var(--text-secondary);
+}
+
+.steps {
+  display: grid;
+  gap: var(--space-block);
+}
+
+.step {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.stepText {
+  display: grid;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: var(--hairline) solid var(--line);
+}
+
+.stepIndex {
+  color: var(--accent);
+}
+
+.stepBody {
+  max-width: var(--measure-narrow);
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .step {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    align-items: end;
+  }
+
+  .stepImage {
+    grid-column: 1 / span 4;
+  }
+
+  .stepText {
+    grid-column: 5 / span 4;
+  }
+}
+
+/* — Desktop: anchored photograph beside the steps — */
+
+@media (min-width: 1024px) {
+  .media {
+    display: block;
+    grid-column: 1 / span 6;
+  }
+
+  .sticky {
+    position: sticky;
+    top: var(--space-7);
+    height: calc(100svh - 2 * var(--space-7));
+    max-height: 60rem;
+  }
+
+  .layer {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity var(--dur-reveal) var(--ease-breath);
+  }
+
+  .layer > * {
+    height: 100%;
+  }
+
+  .layer[data-active] {
+    opacity: 1;
+  }
+
+  .counter {
+    position: absolute;
+    left: var(--space-5);
+    bottom: var(--space-5);
+    color: var(--paper);
+    font-variant-numeric: tabular-nums;
+    mix-blend-mode: difference;
+  }
+
+  .content {
+    grid-column: 8 / span 5;
+  }
+
+  .intro {
+    margin-bottom: var(--space-9);
+  }
+
+  .steps {
+    gap: 0;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    min-height: 62svh;
+  }
+
+  .step .stepImage {
+    display: none;
+  }
+
+  .stepText {
+    width: 100%;
+  }
+
+  /* Dim the list item, not the text: the text carries the reveal's inline opacity */
+  .step {
+    transition: opacity var(--dur-short) var(--ease-breath);
+  }
+
+  .grid[data-tracking] .step:not([data-active]) {
+    opacity: 0.32;
+  }
+}

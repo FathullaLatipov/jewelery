@@ -1,0 +1,136 @@
+.wrap {
+  display: grid;
+}
+
+.success:empty {
+  display: none;
+}
+
+.success {
+  max-width: 28ch;
+}
+
+.form {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.label {
+  color: var(--text-secondary);
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  border-bottom: var(--hairline) solid var(--line-strong);
+  transition: border-color var(--dur-micro) var(--ease-breath);
+}
+
+.field:focus-within {
+  border-bottom-color: var(--text-primary);
+  box-shadow: 0 var(--hairline) 0 var(--text-primary);
+}
+
+.field[data-invalid] {
+  border-bottom-color: var(--error);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: 3.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  appearance: none;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+.submit {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: var(--touch-target);
+  padding-inline-start: var(--space-3);
+}
+
+.submit svg {
+  transition: transform var(--dur-short) var(--ease-silk);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .submit:hover svg {
+    transform: translateX(6px);
+  }
+}
+
+.error {
+  color: var(--error);
+}
+
+.consentRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.checkbox {
+  flex: none;
+  display: grid;
+  place-content: center;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin: 0.8125rem 0;
+  border: var(--hairline) solid var(--line-strong);
+  border-radius: 0;
+  background: transparent;
+  appearance: none;
+  cursor: pointer;
+}
+
+.checkbox::after {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  background-color: var(--text-primary);
+  transform: scale(0);
+  transition: transform var(--dur-micro) var(--ease-silk);
+}
+
+.checkbox:checked::after {
+  transform: scale(1);
+}
+
+.checkbox[aria-invalid="true"] {
+  border-color: var(--error);
+}
+
+.consent {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+.privacy {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  text-decoration: underline;
+  text-decoration-thickness: var(--hairline);
+  text-underline-offset: 0.25em;
+  color: var(--text-secondary);
+}

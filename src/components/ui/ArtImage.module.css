@@ -1,0 +1,69 @@
+.frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background-color: var(--tone);
+}
+
+.ratio {
+  aspect-ratio: var(--ratio-mobile);
+}
+
+@media (min-width: 768px) {
+  .ratio {
+    aspect-ratio: var(--ratio);
+  }
+}
+
+.inner {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* Room to drift without exposing an edge */
+.frame[data-parallax] .inner {
+  inset: -6% 0;
+}
+
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--focal-mobile, 50% 50%);
+  color: transparent;
+}
+
+@media (min-width: 768px) {
+  .img {
+    object-position: var(--focal, 50% 50%);
+  }
+}
+
+.frame[data-fit="contain"] .img {
+  object-fit: contain;
+  object-position: 50% 50%;
+}
+
+/* A photographed sweep dissolves into the surface it sits on */
+.frame[data-blend] {
+  background-color: var(--frame-surface, var(--surface));
+}
+
+.frame[data-blend] .inner {
+  background-color: var(--frame-surface, var(--surface));
+}
+
+/* Lift a grey studio sweep to white so it disappears into a light surface */
+.frame[data-blend="multiply"] .img {
+  mix-blend-mode: multiply;
+  filter: brightness(1.07) contrast(1.03);
+}
+
+/* Press a lifted black down below the ink so only the object remains */
+.frame[data-blend="lighten"] .img {
+  mix-blend-mode: lighten;
+  filter: brightness(0.94) contrast(1.32);
+}

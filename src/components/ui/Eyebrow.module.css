@@ -1,0 +1,13 @@
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-secondary);
+}
+
+.rule {
+  display: block;
+  width: var(--rule-length);
+  height: var(--hairline);
+  background-color: var(--line-strong);
+}

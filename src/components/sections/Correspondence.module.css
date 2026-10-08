@@ -1,0 +1,34 @@
+.grid {
+  row-gap: var(--space-7);
+  padding-top: var(--space-block);
+}
+
+.intro {
+  grid-column: 1 / -1;
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+}
+
+.lede {
+  max-width: var(--measure-narrow);
+  color: var(--text-secondary);
+}
+
+.form {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    align-items: end;
+  }
+
+  .intro {
+    grid-column: 1 / span 5;
+  }
+
+  .form {
+    grid-column: 7 / span 6;
+  }
+}

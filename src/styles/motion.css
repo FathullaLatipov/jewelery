@@ -1,0 +1,123 @@
+/*
+ * Motion states.
+ *
+ * 1. Opening sequence (hero + chrome) runs in CSS so it starts at first paint,
+ *    before any JavaScript arrives. Elements set --intro-delay to choreograph it.
+ * 2. Scroll reveals start hidden only when scripting is on and the visitor allows
+ *    motion; GSAP (src/lib/motion) animates them to rest as they enter view.
+ * Without JavaScript or with reduced motion, the page is complete and still.
+ */
+
+/* — 1. Opening sequence — */
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-intro="media"] {
+    animation: intro-settle var(--dur-hero) var(--ease-silk) both;
+  }
+
+  [data-intro="line"] > span {
+    animation: intro-rise 1100ms var(--ease-silk) var(--intro-delay, 250ms) both;
+  }
+
+  [data-intro="line"]:nth-child(2) > span {
+    --intro-delay: 376ms;
+  }
+
+  [data-intro="fade"] {
+    animation: intro-fade var(--dur-reveal) var(--ease-silk) var(--intro-delay, 700ms) both;
+  }
+
+  [data-intro="chrome"],
+  [data-intro="cue"] {
+    animation: intro-appear var(--dur-reveal) var(--ease-breath) var(--intro-delay, 450ms) both;
+  }
+}
+
+@keyframes intro-settle {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes intro-rise {
+  from {
+    transform: translateY(130%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes intro-fade {
+  from {
+    opacity: 0;
+    transform: translateY(var(--shift-sm));
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes intro-appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* — 2. Scroll reveals — */
+
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal="fade"],
+  [data-reveal-item] {
+    opacity: 0;
+  }
+
+  [data-reveal="lines"] [data-line] > span {
+    transform: translateY(130%);
+  }
+
+  [data-reveal="image"] {
+    clip-path: inset(100% 0 0 0);
+  }
+
+  [data-reveal="hairline"] {
+    transform: scaleX(0);
+  }
+
+  /* Failsafe: if the motion layer never boots, show everything. */
+  html:not([data-motion-ready])
+    :is(
+      [data-reveal="fade"],
+      [data-reveal-item],
+      [data-reveal="lines"] [data-line] > span,
+      [data-reveal="image"],
+      [data-reveal="hairline"]
+    ) {
+    animation: motion-failsafe 0.6s var(--ease-silk) 3.5s forwards;
+  }
+}
+
+@keyframes motion-failsafe {
+  to {
+    opacity: 1;
+    transform: none;
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

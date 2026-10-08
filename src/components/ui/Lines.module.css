@@ -1,0 +1,17 @@
+.line {
+  display: block;
+  overflow: hidden;
+  /* keep descenders and italic overhang inside the mask */
+  padding-block: 0.04em 0.12em;
+  margin-block: -0.04em -0.12em;
+  padding-inline-end: 0.08em;
+}
+
+.inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+.indent {
+  padding-inline-start: var(--line-indent, 1.1em);
+}

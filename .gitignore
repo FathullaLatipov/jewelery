@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# screen recordings (tooling is versioned; frames and renders are not)
+/recordings/node_modules
+/recordings/tmp
+/recordings/output

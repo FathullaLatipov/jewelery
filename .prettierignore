@@ -1,0 +1,8 @@
+.next
+node_modules
+next-env.d.ts
+package-lock.json
+src/fonts
+recordings/node_modules
+recordings/tmp
+recordings/output

@@ -1,0 +1,64 @@
+.grid {
+  row-gap: var(--space-7);
+}
+
+.eyebrow {
+  grid-column: 1 / -1;
+}
+
+.statement {
+  grid-column: 1 / -1;
+  --line-indent: 0.9em;
+}
+
+.statement .inlineMedia {
+  display: inline-block;
+  width: 1.55em;
+  height: 0.78em;
+  margin-inline: 0.06em 0.02em;
+  vertical-align: -0.02em;
+}
+
+.aside {
+  grid-column: 1 / -1;
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+}
+
+.body {
+  max-width: var(--measure);
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .statement {
+    grid-column: 1 / -1;
+    --line-indent: 1.6em;
+  }
+
+  .aside {
+    grid-column: 4 / -1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    row-gap: var(--space-9);
+    align-items: start;
+  }
+
+  .eyebrow {
+    grid-column: 1 / span 2;
+    padding-top: 1.6rem;
+  }
+
+  .statement {
+    grid-column: 3 / span 10;
+    --line-indent: 2.2em;
+  }
+
+  .aside {
+    grid-column: 8 / span 4;
+  }
+}

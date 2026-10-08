@@ -1,0 +1,28 @@
+.label {
+  display: grid;
+  gap: var(--space-1);
+}
+
+.meta {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-2);
+  color: var(--text-tertiary);
+  font-variant-numeric: lining-nums tabular-nums;
+}
+
+.index {
+  color: var(--text-primary);
+}
+
+.title {
+  color: var(--text-primary);
+}
+
+.materials {
+  color: var(--text-secondary);
+}
+
+.details {
+  color: var(--text-tertiary);
+}

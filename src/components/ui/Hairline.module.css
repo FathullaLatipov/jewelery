@@ -1,0 +1,12 @@
+.hairline {
+  display: block;
+  width: 100%;
+  height: var(--hairline);
+  margin: 0;
+  border: 0;
+  background-color: var(--line);
+}
+
+.strong {
+  background-color: var(--line-strong);
+}

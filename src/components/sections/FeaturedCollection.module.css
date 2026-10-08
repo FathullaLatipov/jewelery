@@ -1,0 +1,111 @@
+.grid {
+  align-items: start;
+}
+
+/* — Mobile: text, portrait bleeding right, close-up matted over its corner — */
+
+.text {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  display: grid;
+  justify-items: start;
+  gap: var(--space-5);
+  margin-bottom: var(--space-7);
+}
+
+.title {
+  max-width: 11ch;
+}
+
+.description {
+  max-width: 30ch;
+  color: var(--text-secondary);
+}
+
+.primary {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin-right: calc(-1 * var(--grid-margin));
+}
+
+/* On phones the close-up overlaps this corner; its gallery label carries the information */
+.caption {
+  display: none;
+  margin-top: var(--space-3);
+  color: var(--text-tertiary);
+}
+
+@media (min-width: 768px) {
+  .caption {
+    display: block;
+  }
+}
+
+.detail {
+  grid-column: 2 / -1;
+  grid-row: 3;
+  position: relative;
+  z-index: 1;
+  margin-top: calc(-1 * var(--space-10));
+}
+
+.mat {
+  padding: 0.625rem;
+  background-color: var(--surface);
+}
+
+.label {
+  margin-top: var(--space-4);
+  padding-inline: 0.625rem;
+}
+
+@media (min-width: 768px) {
+  .text {
+    grid-column: 1 / span 6;
+  }
+
+  .primary {
+    grid-column: 1 / span 6;
+    margin-right: 0;
+  }
+
+  .detail {
+    grid-column: 5 / -1;
+    margin-top: calc(-1 * var(--space-11));
+  }
+}
+
+/* — Desktop: architectural spread — */
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-rows: auto auto;
+  }
+
+  .primary {
+    grid-column: 1 / span 6;
+    grid-row: 1 / span 2;
+  }
+
+  .text {
+    grid-column: 8 / span 4;
+    grid-row: 1;
+    margin-bottom: 0;
+    padding-top: var(--space-10);
+  }
+
+  .detail {
+    grid-column: 9 / span 4;
+    grid-row: 2;
+    margin-top: var(--space-9);
+    margin-bottom: calc(-1 * var(--space-10));
+  }
+
+  .mat {
+    padding: 0;
+  }
+
+  .label {
+    padding-inline: 0;
+  }
+}

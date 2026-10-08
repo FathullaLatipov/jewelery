@@ -1,0 +1,121 @@
+/* — Static gallery (mobile, tablet, reduced motion, no JS) — */
+
+.pieces {
+  display: grid;
+  gap: var(--space-block);
+}
+
+.piece {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.object {
+  position: relative;
+  border-top: var(--hairline) solid var(--line);
+  border-bottom: var(--hairline) solid var(--line);
+}
+
+.image {
+  aspect-ratio: 4 / 5;
+}
+
+.text {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.count {
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.name {
+  margin-top: var(--space-2);
+}
+
+.kind {
+  color: var(--text-tertiary);
+}
+
+.facts {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: var(--hairline) solid var(--line);
+  color: var(--text-secondary);
+}
+
+.progressWrap {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .pieces {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+  }
+}
+
+/* — Pinned vitrine (desktop with motion) — */
+
+.root[data-mode="pinned"] .stage {
+  position: relative;
+  height: 100svh;
+}
+
+.root[data-mode="pinned"] .pieces {
+  position: relative;
+  display: block;
+  height: 100%;
+}
+
+.root[data-mode="pinned"] .piece {
+  position: absolute;
+  inset: 0 var(--grid-margin);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--grid-gutter);
+  align-items: center;
+}
+
+.root[data-mode="pinned"] .object {
+  grid-column: 5 / span 5;
+  grid-row: 1;
+  height: 78svh;
+  border: 0;
+}
+
+.root[data-mode="pinned"] .image {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.root[data-mode="pinned"] .text {
+  grid-column: 1 / span 3;
+  grid-row: 1;
+  align-self: end;
+  padding-bottom: 14svh;
+}
+
+.root[data-mode="pinned"] .progressWrap {
+  position: absolute;
+  inset: auto 0 var(--space-7);
+  display: block;
+}
+
+.progressTrack {
+  position: relative;
+  display: block;
+  width: calc(100% / 12 * 3);
+  height: var(--hairline);
+  background-color: var(--line);
+}
+
+.progress {
+  position: absolute;
+  inset: 0;
+  background-color: var(--text-primary);
+  transform-origin: 0 50%;
+}

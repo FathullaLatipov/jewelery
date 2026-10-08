@@ -1,0 +1,25 @@
+.wordmark {
+  display: inline-block;
+  font-family: var(--font-serif);
+  font-weight: 380;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  font-optical-sizing: auto;
+  white-space: nowrap;
+}
+
+.chrome {
+  font-size: 1.625rem;
+}
+
+.display {
+  font-size: var(--text-display-m);
+  font-weight: 300;
+  letter-spacing: 0;
+}
+
+@media (min-width: 1024px) {
+  .chrome {
+    font-size: 1.875rem;
+  }
+}

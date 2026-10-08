@@ -1,0 +1,22 @@
+.section {
+  position: relative;
+  background-color: var(--surface);
+  color: var(--text-primary);
+  overflow-x: clip;
+}
+
+.default {
+  padding-block: var(--space-section);
+}
+
+.continues {
+  padding-block: 0 var(--space-section);
+}
+
+.tight {
+  padding-block: var(--space-block);
+}
+
+.none {
+  padding-block: 0;
+}

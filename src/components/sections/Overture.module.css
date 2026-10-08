@@ -1,0 +1,191 @@
+.hero {
+  display: flex;
+  height: calc(100svh - var(--dock-height) - var(--safe-bottom));
+  min-height: 34rem;
+  overflow: clip;
+}
+
+/* The section's own surface is transparent over photography; ink sits beneath the image. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--ink);
+}
+
+/* Portrait screens: the photograph holds the upper two thirds and dissolves into ink,
+   so the object sits above the words rather than behind them. */
+.media {
+  position: absolute;
+  inset: 0 0 auto;
+  height: 68%;
+}
+
+.media .image {
+  position: absolute;
+  inset: 0;
+}
+
+.scrim {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, var(--ink) 0%, rgb(var(--ink-rgb) / 0.55) 22%, transparent 52%),
+    linear-gradient(to bottom, rgb(var(--ink-rgb) / 0.5) 0%, transparent 24%);
+}
+
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  padding-top: var(--header-height);
+  padding-bottom: var(--space-5);
+}
+
+.content {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.eyebrow {
+  --intro-delay: 200ms;
+  color: var(--text-secondary);
+}
+
+.title {
+  --line-indent: 0.9em;
+  max-width: 12ch;
+}
+
+.support {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.lede {
+  --intro-delay: 700ms;
+  max-width: 24ch;
+  color: var(--text-secondary);
+}
+
+.actions {
+  --intro-delay: 820ms;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: var(--space-6);
+}
+
+.meta {
+  --intro-delay: 1200ms;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: var(--hairline) solid var(--line);
+}
+
+.caption {
+  display: flex;
+  gap: var(--space-3);
+  color: var(--text-tertiary);
+}
+
+.captionIndex {
+  color: var(--text-primary);
+}
+
+.scroll {
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--text-secondary);
+}
+
+.scrollLine {
+  position: relative;
+  display: block;
+  width: 3.5rem;
+  height: var(--hairline);
+  overflow: hidden;
+  background-color: var(--line);
+}
+
+.scrollLine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--text-primary);
+  transform: translateX(-100%);
+  animation: travel 2.4s var(--ease-breath) 1.8s 4 both;
+}
+
+@keyframes travel {
+  0% {
+    transform: translateX(-100%);
+  }
+  55% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .title {
+    --line-indent: 1.4em;
+  }
+
+  .scroll {
+    display: inline-flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    height: 100svh;
+    min-height: 40rem;
+  }
+
+  .media {
+    inset: 0;
+    height: auto;
+  }
+
+  /* Darkness gathers only where the type sits */
+  .scrim {
+    background:
+      linear-gradient(to top, rgb(var(--ink-rgb) / 0.7) 0%, rgb(var(--ink-rgb) / 0.18) 38%, transparent 60%),
+      linear-gradient(to right, rgb(var(--ink-rgb) / 0.5) 0%, rgb(var(--ink-rgb) / 0.12) 45%, transparent 62%),
+      linear-gradient(to bottom, rgb(var(--ink-rgb) / 0.4) 0%, transparent 18%);
+  }
+
+  .stage {
+    padding-bottom: var(--space-6);
+  }
+
+  .content {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter);
+    row-gap: var(--space-6);
+    align-items: end;
+  }
+
+  .eyebrow,
+  .title {
+    grid-column: 1 / span 9;
+  }
+
+  .support {
+    grid-column: 1 / span 5;
+    gap: var(--space-6);
+  }
+
+  .meta {
+    margin-top: var(--space-8);
+  }
+}

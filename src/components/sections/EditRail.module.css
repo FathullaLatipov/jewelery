@@ -1,0 +1,109 @@
+.wrap {
+  --rail-inset: max(var(--grid-margin), calc((100vw - var(--content-max)) / 2));
+  --card-width: calc((100vw - var(--grid-margin) - var(--grid-gutter)) / 1.2);
+}
+
+.rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--card-width);
+  column-gap: var(--grid-gutter);
+  padding-inline: var(--rail-inset);
+  padding-bottom: var(--space-2);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--rail-inset);
+  scrollbar-width: none;
+}
+
+.rail::-webkit-scrollbar {
+  display: none;
+}
+
+.slide {
+  scroll-snap-align: start;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
+  margin-top: var(--space-7);
+}
+
+.track {
+  position: relative;
+  grid-column: 1 / -1;
+  height: var(--hairline);
+  overflow: hidden;
+  background-color: var(--line);
+}
+
+.thumb {
+  position: absolute;
+  inset-block: 0;
+  left: 0;
+  width: calc(var(--ratio, 0.25) * 100%);
+  background-color: var(--text-primary);
+  transform: translateX(var(--offset, 0%));
+}
+
+.buttons {
+  display: none;
+}
+
+.button {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  color: var(--text-primary);
+  transition: opacity var(--dur-micro) var(--ease-breath);
+}
+
+.button:disabled {
+  opacity: 0.28;
+  cursor: default;
+}
+
+.back {
+  transform: scaleX(-1);
+}
+
+.all {
+  grid-column: 1 / -1;
+  justify-self: start;
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    --card-width: calc((100vw - var(--grid-margin) - 2 * var(--grid-gutter)) / 2.5);
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrap {
+    --card-width: calc(
+      (min(100vw, var(--content-max) + 2 * var(--grid-margin)) - var(--grid-margin) - 4 * var(--grid-gutter)) / 4.5
+    );
+  }
+
+  .controls {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  .track {
+    grid-column: auto;
+  }
+
+  .buttons {
+    display: flex;
+    gap: var(--space-2);
+  }
+
+  .all {
+    grid-column: auto;
+  }
+}

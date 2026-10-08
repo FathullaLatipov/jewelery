@@ -1,0 +1,95 @@
+.panel {
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+
+.inner {
+  padding-block: var(--space-4) var(--space-8);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+}
+
+.title {
+  color: var(--text-secondary);
+}
+
+.close {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+  margin-inline-end: calc(-1 * var(--space-3));
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-block: var(--space-6) var(--space-8);
+  border-bottom: var(--hairline) solid var(--line-strong);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding-block: var(--space-3);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  outline: none;
+  appearance: none;
+}
+
+/* Focus is shown by the strengthened rule beneath the field */
+.input:focus-visible {
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--text-tertiary);
+  opacity: 1;
+}
+
+.input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.form:focus-within {
+  border-bottom-color: var(--text-primary);
+}
+
+.submit {
+  display: grid;
+  place-items: center;
+  width: var(--touch-target);
+  height: var(--touch-target);
+}
+
+.suggestions {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-6);
+}
+
+.suggestion {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target);
+  transition: color var(--dur-micro) var(--ease-breath);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .suggestion:hover {
+    color: var(--accent);
+  }
+}

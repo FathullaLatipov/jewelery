@@ -1,0 +1,17 @@
+.inner {
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: var(--space-6);
+  min-height: 100svh;
+  padding-block: calc(var(--header-height) + var(--space-block)) var(--space-block);
+}
+
+.title {
+  max-width: 14ch;
+}
+
+.lede {
+  max-width: 34ch;
+  color: var(--text-secondary);
+}
